@@ -4,8 +4,10 @@ PRECACHE=$2
 
 NODE_URL=https://nodejs.org/dist
 UNOFFICIAL_NODE_URL=https://unofficial-builds.nodejs.org/download/release
-NODE16_VERSION="16.18.1"
-NODE18_VERSION="18.12.1"
+# https://github.com/nodejs/build/issues/2540
+# https://github.com/nodejs/build/issues/2450#issuecomment-1281534815 latest 'unofficial'
+NODE16_VERSION="16.18.0"
+NODE18_VERSION="18.11.0"
 
 get_abs_path() {
   # exploits the fact that pwd will print abs path when no args
@@ -159,9 +161,9 @@ fi
 # Download the external tools for Linux PACKAGERUNTIMEs.
 if [[ "$PACKAGERUNTIME" == "linux-x64" ]]; then
     acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/node-v${NODE16_VERSION}-linux-x64.tar.gz" node16 fix_nested_dir
-    acquireExternalTool "https://vstsagenttools.blob.core.windows.net/tools/nodejs/${NODE16_VERSION}/alpine/x64/node-v${NODE16_VERSION}-alpine-x64.tar.gz" node16_alpine
+    acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/node-v${NODE16_VERSION}-linux-x64.tar.gz" node16_alpine
     acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/node-v${NODE18_VERSION}-linux-x64.tar.gz" node18 fix_nested_dir
-    acquireExternalTool "https://vstsagenttools.blob.core.windows.net/tools/nodejs/${NODE18_VERSION}/alpine/x64/node-v${NODE18_VERSION}-alpine-x64.tar.gz" node18_alpine
+    acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/node-v${NODE18_VERSION}-linux-x64.tar.gz" node18_alpine
 fi
 
 if [[ "$PACKAGERUNTIME" == "linux-arm64" ]]; then

@@ -212,7 +212,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Reference = new Pipelines.RepositoryPathReference()
                         {
                             Name = "actions/download-artifact",
-                            Ref = "master",
+                            Ref = "main",
                             RepositoryType = "GitHub"
                         }
                     }
@@ -222,10 +222,10 @@ namespace GitHub.Runner.Common.Tests.Worker
                 await _actionManager.PrepareActionsAsync(_ec.Object, actions);
 
                 //Assert
-                var watermarkFile = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "actions/download-artifact", "master.completed");
+                var watermarkFile = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "actions/download-artifact", "main.completed");
                 Assert.True(File.Exists(watermarkFile));
 
-                var actionYamlFile = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "actions/download-artifact", "master", "action.yml");
+                var actionYamlFile = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "actions/download-artifact", "main", "action.yml");
                 Assert.True(File.Exists(actionYamlFile));
                 _hc.GetTrace().Info(File.ReadAllText(actionYamlFile));
             }
@@ -319,14 +319,14 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "repositoryactionwithdockerfile",
                             RepositoryType = "GitHub"
                         }
                     }
                 };
 
-                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang", "runner_L0", "repositoryactionwithdockerfile");
+                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart", "runner_L0", "repositoryactionwithdockerfile");
 
                 //Act
                 var steps = (await _actionManager.PrepareActionsAsync(_ec.Object, actions)).ContainerSetupSteps;
@@ -358,7 +358,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "repositoryactionwithdockerfileinrelativepath",
                             Path = "images/cli",
                             RepositoryType = "GitHub"
@@ -366,7 +366,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                     }
                 };
 
-                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang", "runner_L0", "repositoryactionwithdockerfileinrelativepath");
+                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart", "runner_L0", "repositoryactionwithdockerfileinrelativepath");
 
                 //Act
                 var steps = (await _actionManager.PrepareActionsAsync(_ec.Object, actions)).ContainerSetupSteps;
@@ -399,14 +399,14 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "repositoryactionwithdockerfileinrelativepath",
                             RepositoryType = "GitHub"
                         }
                     }
                 };
 
-                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang", "runner_L0", "repositoryactionwithdockerfileinrelativepath");
+                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart", "runner_L0", "repositoryactionwithdockerfileinrelativepath");
                 //Act
                 var steps = (await _actionManager.PrepareActionsAsync(_ec.Object, actions)).ContainerSetupSteps;
 
@@ -438,14 +438,14 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "RepositoryActionWithActionfile_DockerfileRelativePath",
                             RepositoryType = "GitHub"
                         }
                     }
                 };
 
-                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang", "runner_L0", "RepositoryActionWithActionfile_DockerfileRelativePath");
+                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart", "runner_L0", "RepositoryActionWithActionfile_DockerfileRelativePath");
 
                 //Act
                 var steps = (await _actionManager.PrepareActionsAsync(_ec.Object, actions)).ContainerSetupSteps;
@@ -478,14 +478,14 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "RepositoryActionWithActionfile_DockerHubImage",
                             RepositoryType = "GitHub"
                         }
                     }
                 };
 
-                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang", "runner_L0", "RepositoryActionWithActionfile_DockerHubImage");
+                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart", "runner_L0", "RepositoryActionWithActionfile_DockerHubImage");
 
                 //Act
                 var steps = (await _actionManager.PrepareActionsAsync(_ec.Object, actions)).ContainerSetupSteps;
@@ -517,14 +517,14 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "RepositoryActionWithActionYamlFile_DockerHubImage",
                             RepositoryType = "GitHub"
                         }
                     }
                 };
 
-                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang", "runner_L0", "RepositoryActionWithActionYamlFile_DockerHubImage");
+                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart", "runner_L0", "RepositoryActionWithActionYamlFile_DockerHubImage");
 
                 //Act
                 var steps = (await _actionManager.PrepareActionsAsync(_ec.Object, actions)).ContainerSetupSteps;
@@ -556,14 +556,14 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "repositoryactionwithactionfileanddockerfile",
                             RepositoryType = "GitHub"
                         }
                     }
                 };
 
-                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang", "runner_L0", "repositoryactionwithactionfileanddockerfile");
+                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart", "runner_L0", "repositoryactionwithactionfileanddockerfile");
 
                 //Act
                 var steps = (await _actionManager.PrepareActionsAsync(_ec.Object, actions)).ContainerSetupSteps;
@@ -630,7 +630,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId4,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "notpullorbuildimagesmultipletimes1",
                             RepositoryType = "GitHub"
                         }
@@ -641,7 +641,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId5,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "repositoryactionwithdockerfile",
                             RepositoryType = "GitHub"
                         }
@@ -652,7 +652,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId6,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "repositoryactionwithdockerfileinrelativepath",
                             RepositoryType = "GitHub"
                         }
@@ -663,7 +663,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId7,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "repositoryactionwithdockerfileinrelativepath",
                             RepositoryType = "GitHub"
                         }
@@ -674,7 +674,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId8,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "repositoryactionwithdockerfileinrelativepath",
                             Path = "images/cli",
                             RepositoryType = "GitHub"
@@ -694,13 +694,13 @@ namespace GitHub.Runner.Common.Tests.Worker
                 Assert.Contains(actionId4, (steps[1].Data as ContainerSetupInfo).StepIds);
                 Assert.Equal("ubuntu:18.04", (steps[1].Data as ContainerSetupInfo).Container.Image);
 
-                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang", "runner_L0", "repositoryactionwithdockerfile");
+                var actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart", "runner_L0", "repositoryactionwithdockerfile");
 
                 Assert.Equal(actionId5, (steps[2].Data as ContainerSetupInfo).StepIds[0]);
                 Assert.Equal(actionDir, (steps[2].Data as ContainerSetupInfo).Container.WorkingDirectory);
                 Assert.Equal(Path.Combine(actionDir, "Dockerfile"), (steps[2].Data as ContainerSetupInfo).Container.Dockerfile);
 
-                actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang", "runner_L0", "repositoryactionwithdockerfileinrelativepath");
+                actionDir = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart", "runner_L0", "repositoryactionwithdockerfileinrelativepath");
 
                 Assert.Contains(actionId6, (steps[3].Data as ContainerSetupInfo).StepIds);
                 Assert.Contains(actionId7, (steps[3].Data as ContainerSetupInfo).StepIds);
@@ -737,7 +737,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Reference = new Pipelines.RepositoryPathReference()
                         {
                             Name = "actions/setup-node",
-                            Ref = "v1",
+                            Ref = "v3",
                             RepositoryType = "GitHub"
                         }
                     }
@@ -773,7 +773,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "RepositoryActionWithInvalidWrapperActionfile_Node",
                             RepositoryType = "GitHub"
                         }
@@ -823,7 +823,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId1,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "RepositoryActionWithWrapperActionfile_Node",
                             RepositoryType = "GitHub"
                         }
@@ -834,7 +834,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId2,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "RepositoryActionWithWrapperActionfile_Docker",
                             RepositoryType = "GitHub"
                         }
@@ -871,7 +871,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "CompositeBasic",
                             RepositoryType = "GitHub"
                         }
@@ -884,10 +884,10 @@ namespace GitHub.Runner.Common.Tests.Worker
 
                 // node.js based action doesn't need any extra steps to build/pull containers.
                 Assert.True(steps.Count == 0);
-                var watermarkFile = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "TingluoHuang/runner_L0", "CompositeBasic.completed");
+                var watermarkFile = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "louis-bompart/runner_L0", "CompositeBasic.completed");
                 Assert.True(File.Exists(watermarkFile));
                 // Comes from the composite action
-                var watermarkFile2 = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "actions/setup-node", "v2", "action.yml");
+                var watermarkFile2 = Path.Combine(_hc.GetDirectory(WellKnownDirectory.Actions), "actions/setup-node", "v3", "action.yml");
                 Assert.True(File.Exists(watermarkFile2));
             }
             finally
@@ -914,7 +914,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "CompositeLimit",
                             RepositoryType = "GitHub"
                         }
@@ -957,7 +957,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "CompositePrestep",
                             RepositoryType = "GitHub"
                         }
@@ -996,7 +996,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                         Id = actionId,
                         Reference = new Pipelines.RepositoryPathReference()
                         {
-                            Name = "TingluoHuang/runner_L0",
+                            Name = "louis-bompart/runner_L0",
                             Ref = "CompositeContainerNested",
                             RepositoryType = "GitHub"
                         }
@@ -1288,7 +1288,7 @@ runs:
         [Fact]
         [Trait("Level", "L0")]
         [Trait("Category", "Worker")]
-        public void LoadsNode12ActionDefinition()
+        public void LoadsNode18ActionDefinition()
         {
             try
             {
@@ -1313,7 +1313,7 @@ outputs:
 icon: 'hello.svg' # vector art to display in the GitHub Marketplace
 color: 'green' # optional, decorates the entry in the GitHub Marketplace
 runs:
-  using: 'node12'
+  using: 'node18'
   main: 'task.js'
 ";
                 Pipelines.ActionStep instance;
@@ -1346,7 +1346,7 @@ runs:
 
                 Assert.NotNull(definition.Data.Execution as NodeJSActionExecutionData);
                 Assert.Equal("task.js", (definition.Data.Execution as NodeJSActionExecutionData).Script);
-                Assert.Equal("node12", (definition.Data.Execution as NodeJSActionExecutionData).NodeVersion);
+                Assert.Equal("node18", (definition.Data.Execution as NodeJSActionExecutionData).NodeVersion);
             }
             finally
             {
@@ -1451,7 +1451,7 @@ outputs:
 icon: 'hello.svg' # vector art to display in the GitHub Marketplace
 color: 'green' # optional, decorates the entry in the GitHub Marketplace
 runs:
-  using: 'node12'
+  using: 'node18'
   main: 'task.js'
 ";
                 Pipelines.ActionStep instance;
@@ -1730,7 +1730,7 @@ outputs:
 icon: 'hello.svg' # vector art to display in the GitHub Marketplace
 color: 'green' # optional, decorates the entry in the GitHub Marketplace
 runs:
-  using: 'node12'
+  using: 'node18'
   main: 'task.js'
 ";
                 Pipelines.ActionStep instance;
@@ -1798,7 +1798,7 @@ outputs:
 icon: 'hello.svg' # vector art to display in the GitHub Marketplace
 color: 'green' # optional, decorates the entry in the GitHub Marketplace
 runs:
-  using: 'node12'
+  using: 'node18'
   main: 'task.js'
   post: 'cleanup.js'
 ";
@@ -2064,7 +2064,7 @@ author: 'GitHub'
 icon: 'hello.svg' # vector art to display in the GitHub Marketplace
 color: 'green' # optional, decorates the entry in the GitHub Marketplace
 runs:
-  using: 'node12'
+  using: 'node18'
   main: 'task.js'
 ";
             CreateAction(yamlContent: Content, instance: out _, directory: out string directory);

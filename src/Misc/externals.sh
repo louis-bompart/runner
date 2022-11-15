@@ -4,8 +4,11 @@ PRECACHE=$2
 
 NODE_URL=https://nodejs.org/dist
 UNOFFICIAL_NODE_URL=https://unofficial-builds.nodejs.org/download/release
+# https://github.com/nodejs/build/issues/2540
+# https://github.com/nodejs/build/issues/2450#issuecomment-1281534815 latest 'unofficial'
 NODE12_VERSION="12.22.7"
-NODE16_VERSION="16.13.0"
+NODE16_VERSION="16.18.0"
+NODE18_VERSION="18.11.0"
 
 get_abs_path() {
   # exploits the fact that pwd will print abs path when no args
@@ -130,6 +133,8 @@ if [[ "$PACKAGERUNTIME" == "win-x64" || "$PACKAGERUNTIME" == "win-x86" ]]; then
     acquireExternalTool "$NODE_URL/v${NODE12_VERSION}/$PACKAGERUNTIME/node.lib" node12/bin
     acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/$PACKAGERUNTIME/node.exe" node16/bin
     acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/$PACKAGERUNTIME/node.lib" node16/bin
+    acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/$PACKAGERUNTIME/node.exe" node18/bin
+    acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/$PACKAGERUNTIME/node.lib" node18/bin
     if [[ "$PRECACHE" != "" ]]; then
         acquireExternalTool "https://github.com/microsoft/vswhere/releases/download/2.6.7/vswhere.exe" vswhere
     fi
@@ -149,27 +154,33 @@ fi
 if [[ "$PACKAGERUNTIME" == "osx-x64" ]]; then
     acquireExternalTool "$NODE_URL/v${NODE12_VERSION}/node-v${NODE12_VERSION}-darwin-x64.tar.gz" node12 fix_nested_dir
     acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/node-v${NODE16_VERSION}-darwin-x64.tar.gz" node16 fix_nested_dir
+    acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/node-v${NODE18_VERSION}-darwin-x64.tar.gz" node18 fix_nested_dir
 fi
 
 if [[ "$PACKAGERUNTIME" == "osx-arm64" ]]; then
     # node.js v12 doesn't support macOS on arm64.
     acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/node-v${NODE16_VERSION}-darwin-arm64.tar.gz" node16 fix_nested_dir
+    acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/node-v${NODE18_VERSION}-darwin-arm64.tar.gz" node18 fix_nested_dir
 fi
 
 # Download the external tools for Linux PACKAGERUNTIMEs.
 if [[ "$PACKAGERUNTIME" == "linux-x64" ]]; then
-    acquireExternalTool "$NODE_URL/v${NODE12_VERSION}/node-v${NODE12_VERSION}-linux-x64.tar.gz" node12 fix_nested_dir
+acquireExternalTool "$NODE_URL/v${NODE12_VERSION}/node-v${NODE12_VERSION}-linux-x64.tar.gz" node12 fix_nested_dir
     acquireExternalTool "https://vstsagenttools.blob.core.windows.net/tools/nodejs/${NODE12_VERSION}/alpine/x64/node-v${NODE12_VERSION}-alpine-x64.tar.gz" node12_alpine
     acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/node-v${NODE16_VERSION}-linux-x64.tar.gz" node16 fix_nested_dir
-    acquireExternalTool "https://vstsagenttools.blob.core.windows.net/tools/nodejs/${NODE16_VERSION}/alpine/x64/node-v${NODE16_VERSION}-alpine-x64.tar.gz" node16_alpine
+    acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/node-v${NODE16_VERSION}-linux-x64.tar.gz" node16_alpine
+    acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/node-v${NODE18_VERSION}-linux-x64.tar.gz" node18 fix_nested_dir
+    acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/node-v${NODE18_VERSION}-linux-x64.tar.gz" node18_alpine
 fi
 
 if [[ "$PACKAGERUNTIME" == "linux-arm64" ]]; then
-    acquireExternalTool "$NODE_URL/v${NODE12_VERSION}/node-v${NODE12_VERSION}-linux-arm64.tar.gz" node12 fix_nested_dir
+acquireExternalTool "$NODE_URL/v${NODE12_VERSION}/node-v${NODE12_VERSION}-linux-arm64.tar.gz" node12 fix_nested_dir
     acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/node-v${NODE16_VERSION}-linux-arm64.tar.gz" node16 fix_nested_dir
+    acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/node-v${NODE18_VERSION}-linux-arm64.tar.gz" node18 fix_nested_dir
 fi
 
 if [[ "$PACKAGERUNTIME" == "linux-arm" ]]; then
-    acquireExternalTool "$NODE_URL/v${NODE12_VERSION}/node-v${NODE12_VERSION}-linux-armv7l.tar.gz" node12 fix_nested_dir
+acquireExternalTool "$NODE_URL/v${NODE12_VERSION}/node-v${NODE12_VERSION}-linux-armv7l.tar.gz" node12 fix_nested_dir
     acquireExternalTool "$NODE_URL/v${NODE16_VERSION}/node-v${NODE16_VERSION}-linux-armv7l.tar.gz" node16 fix_nested_dir
+    acquireExternalTool "$NODE_URL/v${NODE18_VERSION}/node-v${NODE18_VERSION}-linux-armv7l.tar.gz" node18 fix_nested_dir
 fi

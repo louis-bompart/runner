@@ -5,12 +5,11 @@ namespace GitHub.Runner.Common.Util
 {
     public static class NodeUtil
     {
-        private const string _defaultNodeVersion = "node16";
-
+        private const string _defaultNodeVersion = "node18";
 #if (OS_OSX || OS_WINDOWS) && ARM64
-        public static readonly ReadOnlyCollection<string> BuiltInNodeVersions = new(new[] { "node16" });
+        public static readonly ReadOnlyCollection<string> BuiltInNodeVersions = new(new[] { "node16", "node18" });
 #else
-        public static readonly ReadOnlyCollection<string> BuiltInNodeVersions = new(new[] { "node12", "node16" });
+        public static readonly ReadOnlyCollection<string> BuiltInNodeVersions = new(new[] { "node12", "node16", "node18" });
 #endif
 
         public static string GetInternalNodeVersion()

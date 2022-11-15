@@ -103,9 +103,9 @@ namespace GitHub.Runner.Worker.Handlers
                 Constants.Runner.PlatformArchitecture.Equals(Constants.Architecture.Arm64))
             {
 #if OS_OSX
-                ExecutionContext.Output($"The node12 is not supported on macOS ARM64 platform. Use node16 instead.");
+                ExecutionContext.Output($"The node12 is not supported on macOS ARM64 platform. Use node16, or node18 instead.");
 #elif OS_WINDOWS
-                ExecutionContext.Output($"The node12 is not supported on windows ARM64 platform. Use node16 instead.");
+                ExecutionContext.Output($"The node12 is not supported on windows ARM64 platform. Use node16, or node18 instead.");
 #endif
                 Data.NodeVersion = "node16";
             }

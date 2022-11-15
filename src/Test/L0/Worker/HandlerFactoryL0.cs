@@ -31,17 +31,23 @@ namespace GitHub.Runner.Common.Tests.Worker
         [Trait("Level", "L0")]
         [Trait("Category", "Worker")]
         [InlineData("node12", "", "", "", "node12")]
-        [InlineData("node12", "true", "", "", "node16")]
+        [InlineData("node12", "true", "", "", "node18")]
         [InlineData("node12", "true", "", "true", "node12")]
         [InlineData("node12", "true", "true", "", "node12")]
         [InlineData("node12", "true", "true", "true", "node12")]
-        [InlineData("node12", "true", "false", "true", "node16")] // workflow overrides env
+        [InlineData("node12", "true", "false", "true", "node18")] // workflow overrides env
         [InlineData("node16", "", "", "", "node16")]
         [InlineData("node16", "true", "", "", "node16")]
         [InlineData("node16", "true", "", "true", "node16")]
         [InlineData("node16", "true", "true", "", "node16")]
         [InlineData("node16", "true", "true", "true", "node16")]
         [InlineData("node16", "true", "false", "true", "node16")]
+        [InlineData("node18", "", "", "", "node18")]
+        [InlineData("node18", "true", "", "", "node18")]
+        [InlineData("node18", "true", "", "true", "node18")]
+        [InlineData("node18", "true", "true", "", "node18")]
+        [InlineData("node18", "true", "true", "true", "node18")]
+        [InlineData("node18", "true", "false", "true", "node18")]
         public void IsNodeVersionUpgraded(string inputVersion, string serverFeatureFlag, string workflowOptOut, string machineOptOut, string expectedVersion)
         {
             using (TestHostContext hc = CreateTestContext())
@@ -54,7 +60,7 @@ namespace GitHub.Runner.Common.Tests.Worker
                 var variables = new Dictionary<string, VariableValue>();
                 if (!string.IsNullOrEmpty(serverFeatureFlag))
                 {
-                    variables["DistributedTask.ForceGithubJavascriptActionsToNode16"] = serverFeatureFlag;
+                    variables["DistributedTask.ForceGithubJavascriptActionsToNode18"] = serverFeatureFlag;
                 }
                 Variables serverVariables = new(hc, variables);
 
